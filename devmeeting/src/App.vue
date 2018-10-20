@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import ProductList from './components/ProductList';
 import AddProduct from './components/AddProduct';
 
@@ -16,15 +17,12 @@ export default {
     ProductList,
 	AddProduct
   },
+  async created() {
+    this.products = await axios.get('http://localhost:3000/products').then(res => res.data);
+  },
   data() {
   return {
-    products: [{
-      id: 0,
-      name: 'Coffee'
-	},{
-      id: 1,
-      name: 'Pizza'
-	}],
+      products: [],
 	}
   },
   methods: {        

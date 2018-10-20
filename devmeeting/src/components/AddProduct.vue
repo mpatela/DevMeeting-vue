@@ -24,11 +24,11 @@ export default {
   methods: {
     addItem() {
       this.$emit('add-product', 
-	    {
-		  id: uuid(),
-		  ...this.newProduct
+        {
+          id: uuid(),
+          ...this.newProduct
         }
-	  );
+      );
       this.newProduct.name = '';
 	}
   }
