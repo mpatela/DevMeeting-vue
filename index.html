@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js Start</title>
+</head>
+
+<body>
+  <h1>Test app</h1>
+  <div id="app">
+    <h2>My list</h2>
+    <ul>
+      <li v-for="p in products">{{ p.name }}</li>
+    </ul>
+    <p v-if="!products.length">No products!</p>
+    <button v-on:click="removeLast()">Remove last item</button>
+	<!--<button v-on:click="addItem()">Add item</button>-->
+  </div>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="Vue.js"></script>
+</body>
+
+</html>
