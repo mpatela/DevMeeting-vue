@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <h2>My list</h2>
-    <product-list :products="products"></product-list>
+    <product-list :products="sharedState.products"></product-list>
 	<add-product @add-product="onAddProduct"></add-product>	
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+
 import ProductList from './components/ProductList';
 import AddProduct from './components/AddProduct';
+import store from '../store';
 
 export default {
   name: 'app',
@@ -17,17 +18,17 @@ export default {
     ProductList,
 	AddProduct
   },
-  async created() {
-    this.products = await axios.get('http://localhost:3000/products').then(res => res.data);
+  created() {
+    store.fetchProducts();
   },
   data() {
-  return {
-      products: [],
-	}
+    return {
+      sharedState: store.state
+    }
   },
   methods: {        
 	onAddProduct(product) {
-      this.products.push(product);
+      store.addProduct(product);
     }
   }
 }
